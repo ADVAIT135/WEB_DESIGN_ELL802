@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Elex Currency Chest Record Keeper</title>
+    <style>
+      label {
+        display: inline-block;
+        width: 100px;
+        margin-bottom: 10px;
+      }
+    </style>
+    <script>
+      function calculateTotalValue() {
+        var denomination = parseInt(document.getElementById("denomination").value);
+        var numberOfNotes = parseInt(document.getElementById("number_of_notes").value);
+        var totalValue = denomination * numberOfNotes;
+        document.getElementById("total_value").value = totalValue;
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Elex Currency Chest Record Keeper</h1>
+    <form action="currency_chest_transaction.php" method="post">
+      <label>Transaction Type:</label>
+      <select name="transaction_type">
+        <option value="deposit">Deposit</option>
+        <option value="withdrawal">Withdrawal</option>
+      </select><br>
+      <label>Denomination:</label>
+      <select name="denomination" id="denomination" onchange="calculateTotalValue()">
+        <option value="2000">2000</option>
+        <option value="500">500</option>
+        <option value="200">200</option>
+        <option value="100">100</option>
+        <option value="50">50</option>
+        <option value="20">20</option>
+        <option value="10">10</option>
+      </select><br>
+      <label>Number of Notes:</label>
+      <input type="number" name="number_of_notes" id="number_of_notes" onchange="calculateTotalValue()"><br>
+      <label>Total Value:</label>
+      <input type="text" name="total_value" id="total_value" readonly><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
